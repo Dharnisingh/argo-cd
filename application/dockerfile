@@ -1,0 +1,6 @@
+# Use the existing image as the base
+FROM mlinarik/speedtest:latest
+
+# Optionally add labels to identify your copy
+LABEL maintainer="Dharni"
+LABEL description="Replica of speedtest"
