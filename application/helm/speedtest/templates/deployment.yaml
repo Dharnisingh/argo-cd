@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-speedtest
+  labels:
+    app: {{ .Release.Name }}-speedtest
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-speedtest
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-speedtest
+    spec:
+      containers:
+        - name: speedtest
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+{{ toYaml .Values.commandArgs | indent 12 }}
+          ports:
+            - containerPort: {{ .Values.service.port }}

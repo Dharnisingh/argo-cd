@@ -1,0 +1,13 @@
+replicaCount: 1
+
+image:
+  repository: dharnisingh/speedtest
+  tag: latest
+  pullPolicy: IfNotPresent
+
+commandArgs:
+  - --accept-license
+
+service:
+  type: ClusterIP
+  port: 80

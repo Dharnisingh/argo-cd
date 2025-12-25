@@ -1,6 +1,9 @@
-# Use the existing image as the base
-FROM mlinarik/speedtest:latest
+# Use the specified image as the base
+FROM dharnisingh/speedtest:latest
 
 # Optionally add labels to identify your copy
 LABEL maintainer="Dharni"
 LABEL description="Replica of speedtest"
+
+# Run the speedtest binary and accept the license by default
+ENTRYPOINT ["speedtest", "--accept-license"]
